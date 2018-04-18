@@ -37,13 +37,13 @@ class Post(models.Model):
         return '{}'.format(self.title)
 
 class Category(models.Model):
-    category_title = models.CharField(max_length=150)
+    category = models.CharField(max_length=150)
 
     def __str__(self):
         return '{}'.format(self.category_title)
 
 class Tags(models.Model):
-    tags_title = models.CharField(max_length=150)
+    tags = models.CharField(max_length=150)
 
     def __str__(self):
         return '{}'.format(self.tags_title)
