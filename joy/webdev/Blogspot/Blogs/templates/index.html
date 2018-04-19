@@ -1,4 +1,16 @@
-  {{% extends "base.html" %}
+ {% extends "base.html" %}
+
+  {% load static %}
+
+  {% block head_title %}List | {{ block.super }}{% endblock head_title %}
+
+  {% block content %}
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+
+
+  {% for index in index %}
+  <p>Heading: {{ index.heading}}</p>
+  <p>Sub Heading: {{ index.heading}}</p>
 
   <h1>{{ object.headline }}</h1>
   <p>{{ object.content }}</p>

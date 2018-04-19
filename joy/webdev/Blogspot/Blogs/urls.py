@@ -17,7 +17,7 @@ from django.urls import path
 
 from . import views
 
-from .views import PostView
+from .views import PostView, IndexView
 
 app_name = 'Blogs'
 
