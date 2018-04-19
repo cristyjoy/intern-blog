@@ -9,10 +9,10 @@
 {% if index %}
     <p>Index</p>
 
-    {% for head in index %}
-      <h1>Heading: {{ head.heading }}</h1>
-      <h4>Sub Heading: {{ head.sub_Heading }}</h4>
-      {% for post in head.post_set.all %}
+
+      <h1>Heading: {{ index.heading }}</h1>
+      <h4>Sub Heading: {{ index.sub_Heading }}</h4>
+      {% for post in post %}
         <p>Title: {{ post.title }}</p>
         <p>Author: {{ post.author }}</p>
         <p><small>Date Created: {{ post.date_created }}</small></p>
@@ -28,17 +28,19 @@
         <p>***************************************************************************************************************************************************************</p>
 
       {% endfor %}
-    {% endfor %}
+
   {% else %}
     <p>No posts yet.</p>
+  {% endif %}
 
-{% for page_num in post.paginator.page_range %}
+
+ {% for page_num in post.paginator.page_range %}
     <li>
       <a href="?page={{ page_num }}">{{ page_num }}</a>
     </li>
-{% endfor %}
+  {% endfor %}
 
-<div class="pagination">
+  <div class="pagination">
     <span class="step-links">
       {% if post.has_previous %}
         <a href="?page={{ post.previous_page_number }}">previous</a>
@@ -54,5 +56,5 @@
     </span>
 </div>
 
-{% endif %}
+
 {% endblock %}
