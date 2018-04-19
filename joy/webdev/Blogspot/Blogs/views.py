@@ -23,8 +23,7 @@ class IndexView(View):
     def get(self,request,pk,*args, **kwargs):
         index = Index.objects.filter(pk=pk)
         post_list = Post.objects.all()
-        paginate_by = 1
-        paginator = Paginator(post_list, 1)
+        paginator = Paginator(post_list, 3)
         page = request.GET.get('page')
         post = paginator.get_page(page)
 
