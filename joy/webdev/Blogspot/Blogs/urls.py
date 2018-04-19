@@ -17,12 +17,11 @@ from django.urls import path
 
 from . import views
 
-from .views import PostView, IndexView
+from .views import IndexView, PostView
 
-app_name = 'Blogs'
+app_name = 'blog'
 
 urlpatterns = [
-    path('<int:pk>/', views.IndexView.as_view(), name='index'),
-    path('Post/<int:post_id>/', views.PostView.as_view(), name='post'),
+    path('<int:pk>/', IndexView.as_view(), name='index'),
+    path('post/<int:post_id>/', PostView.as_view(), name='post-list'),
 ]
-
