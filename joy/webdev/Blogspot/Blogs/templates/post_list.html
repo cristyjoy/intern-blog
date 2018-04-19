@@ -7,11 +7,13 @@
 {% block content %}
   <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
 
+
+
   {% for post in post %}
-  	<p>User: {{ post.user}}</p>
   	<p>Title: {{ post.title}}</p>
   	<p>Subtitle: {{ post.sub_Title}}</p>
-  	<img src="{{ post.banner_Photo.url }}">
+     <img src="{{ post.banner_Photo.url }}">
+    <p>User: {{ post.user}}</p>
   	<p>Author: {{ post.author }}</p>
   	<p>Date: {{ post.date }}</p>
   	<p>Date Modified: {{ post.date_modified }}</p>
@@ -21,4 +23,5 @@
 	  <p>Status: {{ post.status }}</p>
 
   {% endfor %}
+
 {% endblock %}

@@ -22,6 +22,7 @@ from .views import PostView
 app_name = 'Blogs'
 
 urlpatterns = [
-    path('', views.PostView.as_view(), name='index'),
+    path('<int:pk>/', views.IndexView.as_view(), name='index'),
+    path('Post/<int:post_id>/', views.PostView.as_view(), name='post'),
 ]
 
