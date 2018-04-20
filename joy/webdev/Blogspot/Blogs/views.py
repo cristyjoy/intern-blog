@@ -5,7 +5,7 @@ from django.http import HttpResponse
 from django.views import View, generic
 
 
-from .models import Post, Index, Category, Tags
+from .models import Post, Index, Category, Tags,Comment
 
 class IndexView(View):
 

@@ -20,6 +20,7 @@ class Index(models.Model):
         return '{}'.format(self.heading)
 
 class Post(models.Model):
+    STATUS_CHOICES = (('publishsed', 'Published'), ('draft', 'Draft'), ('hidden', 'Hidden'),)
     user = models.ForeignKey(User,on_delete=models.CASCADE)
     title = models.CharField(max_length=150)
     sub_Title = models.CharField(max_length=150)
@@ -30,8 +31,9 @@ class Post(models.Model):
     date_modified = models.DateTimeField(auto_now_add=True)
     blog = models.ForeignKey(Index, on_delete=models.CASCADE)
     category = models.ForeignKey('Category', on_delete=models.CASCADE)
-    tags = models.ManyToManyField("Tags",related_name="Post")
-    status = models.CharField(max_length=9, choices=POST_STATUS, blank=True, default=True)
+    tags = models.ManyToManyField('Tags',related_name="Post")
+    status = models.CharField(max_length=10, choices=POST_STATUS, default='draft')
+
 
     def __str__(self):
         return '{}'.format(self.title)
@@ -48,7 +50,13 @@ class Tags(models.Model):
     def __str__(self):
         return '{}'.format(self.tags)
 
+class Comment(models.Model):
+    post = models.ForeignKey('Post', on_delete=models.CASCADE)
+    author = models.CharField(max_length=300)
+    content = models.TextField()
+    date_created = models.DateTimeField(auto_now_add=True)
 
 
-
+    def __str__(self):
+        return '{}'.format(self.post)
 
